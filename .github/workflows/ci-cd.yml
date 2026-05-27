@@ -1,6 +1,5 @@
 ﻿name: CI/CD Pipeline
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   push:
     branches:
@@ -18,7 +17,7 @@ on:
 env:
   DOCKER_IMAGE: torpeda808/devops-platform-app
   PYTHON_VERSION: "3.12"
-
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 jobs:
   # =====================================================
   # JOB 1: TESTS - run unit tests
