@@ -129,6 +129,9 @@ jobs:
   # =====================================================
   # JOB 4: UPDATE GITOPS REPO with new image tag
   # =====================================================
+  # =====================================================
+  # JOB 4: UPDATE GITOPS REPO with new image tag
+  # =====================================================
   update-gitops:
     name: Update GitOps Manifests
     runs-on: ubuntu-latest
@@ -142,6 +145,7 @@ jobs:
           repository: dxczek/devops-platform-gitops
           token: ${{ secrets.GITOPS_TOKEN }}
           path: gitops
+          persist-credentials: true
 
       - name: Update image tag in deployment
         run: |
@@ -151,11 +155,28 @@ jobs:
           echo "Updated to tag: ${NEW_TAG}"
           cat base/app/app-deployment.yaml | grep image:
 
+      - name: Verify token permissions
+        run: |
+          cd gitops
+          echo "Checking remote URL..."
+          git remote -v
+          echo ""
+          echo "Token validation..."
+          curl -H "Authorization: Bearer ${{ secrets.GITOPS_TOKEN }}" \
+               -H "Accept: application/vnd.github+json" \
+               https://api.github.com/repos/dxczek/devops-platform-gitops | jq '.permissions'
+
       - name: Commit and push changes
+        env:
+          GITOPS_TOKEN: ${{ secrets.GITOPS_TOKEN }}
         run: |
           cd gitops
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
+          
+          # Set the remote URL with token explicitly
+          git remote set-url origin https://x-access-token:${GITOPS_TOKEN}@github.com/dxczek/devops-platform-gitops.git
+          
           git add base/app/app-deployment.yaml
           git diff --staged --quiet || git commit -m "ci: update task-api image to ${{ needs.build-and-push.outputs.image_tag }}"
-          git push
+          git push origin main
