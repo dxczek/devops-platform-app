@@ -53,7 +53,7 @@ def root():
     """Welcome endpoint."""
     return {
         "message": "Task Management API",
-        "version": "1.1.0",
+        "version": "2.0.0",
         "docs": "/docs",
         "health": "/health",
         "author": "Jan Duczek"
