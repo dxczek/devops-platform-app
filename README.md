@@ -30,7 +30,7 @@ FastAPI sam generuje interaktywną dokumentację Swagger, dostępną pod `/docs`
 
 ## Jak uruchomić lokalnie
 
-Najprościej przez Docker Compose, bo od razu stawia aplikację razem z bazą:
+Uruchomienie przez Docker Compose, od razu stawia aplikację razem z bazą:
 
 ```bash
 docker-compose up --build
@@ -38,7 +38,7 @@ docker-compose up --build
 
 Aplikacja będzie dostępna pod `http://localhost:8000`, a dokumentacja Swagger pod `http://localhost:8000/docs`.
 
-Jeśli wolisz odpalić bez Dockera, potrzebujesz uruchomionego PostgreSQL i wtedy:
+Do odpalenia bez dockera potrzebne bedzie: uruchomione  PostgreSQL i wtedy:
 
 ```bash
 pip install -r requirements.txt
