@@ -2,9 +2,9 @@
 
 Aplikacja webowa, którą napisałem na potrzeby pracy inżynierskiej jako element platformy GitOps. To proste API do zarządzania zadaniami (typu CRUD), które służy jako aplikacja demonstracyjna do pokazania pełnego procesu wdrażania: od kodu, przez pipeline CI/CD, aż po automatyczne wdrożenie w klastrze Kubernetes przez ArgoCD.
 
-Manifesty Kubernetes i konfiguracja wdrożenia są w osobnym repozytorium: [devops-platform-gitOps](https://github.com/dxczek/devops-platform-gitOps). Taki podział to jedna z dobrych praktyk GitOps, kod aplikacji żyje osobno od konfiguracji wdrożenia.
+Manifesty Kubernetes i konfiguracja wdrożenia są w osobnym repozytorium: [devops-platform-gitOps](https://github.com/dxczek/devops-platform-gitOps).  
 
-## Co potrafi aplikacja
+ 
 
 API jest napisane w Pythonie z użyciem frameworka FastAPI. Wystawia kilka endpointów:
 
@@ -81,4 +81,6 @@ requirements.txt    zależności Pythona
 
 ## Autor
 
-Jan Duczek, projekt do pracy inżynierskiej.
+Jan Duczek
+nr albumu 44682,
+projekt do pracy inżynierskiej.
